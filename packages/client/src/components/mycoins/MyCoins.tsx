@@ -11,10 +11,10 @@ import { useSetPurchases } from "../../hooks/useSetPurchases";
 import Button from "../button/Button";
 function MyCoins({ setCurrCoin, setModalPurpose }: { setCurrCoin: Function, setModalPurpose: Function }) {
 
-    const favCoinsLocal = useLocalFavs().data;
+    const favCoinsLocal: string[] | undefined = useLocalFavs().data;
     const setFavCoinsLocal = useSetLocalFavs();
 
-    const purchasesLocal = usePurchases().data;
+    const purchasesLocal: ICoinCase[] | undefined = usePurchases().data;
     const setPurchasesLocal = useSetPurchases(); 
 
     const favCoinsResponse = trpc.getByIds.useQuery({ ids: (favCoinsLocal || []).join(',') }); 

@@ -1,5 +1,5 @@
 import { CoinService } from "../utils/coins.service"
-import { useQuery } from "@tanstack/react-query"
+import { useQuery } from '@tanstack/react-query';
 
 export const usePurchases = () => {
     const { isLoading, data: response, isSuccess} = useQuery(
