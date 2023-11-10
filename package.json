@@ -5,7 +5,8 @@
     "license": "MIT",
     "private": true,
     "scripts": {
-        "start": "concurrently \"wsrun --parallel start\""
+        "start": "concurrently \"wsrun --parallel start\"",
+        "build": "concurrently \"wsrun --parallel build\""
     },
     "workspaces": [
         "packages/*"
