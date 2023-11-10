@@ -38,7 +38,7 @@ function MyCoins({ setCurrCoin, setModalPurpose }: { setCurrCoin: Function, setM
                 ?.find(coin => coin.id === purchCoin.id)!.priceUsd) - Number(purchCoin.priceUsd)) * purchCoin.coinNum));
 
     return (
-            <div className={styles.my_coins}>
+            <div data-testid='purchase-mycoins' className={styles.my_coins}>
                 <h1>My coins</h1>
                 {
                     favCoinsResponse.isSuccess ? (
@@ -78,7 +78,7 @@ function MyCoins({ setCurrCoin, setModalPurpose }: { setCurrCoin: Function, setM
                             (purchasesLocal as ICoinCase[]).map((purchCoin, index) => {
                                 let coinFromApi = (purchCoinsResponse.data?.data as ICoin[]).find(coin => coin.id === purchCoin.id)!;
                                 return <div className={styles.purch_wrapper} key={coinFromApi.id + purchCoin.coinNum + purchCoin.priceUsd}>
-                                    <div className={styles.purch_item}>
+                                    <div data-testid='sell-btn-wrapper' className={styles.purch_item}>
                                         <img loading="lazy"
                                             src={variables.COIN_ICONS_API_URL + (coinFromApi.symbol.toLowerCase() != '' ? coinFromApi.symbol.toLowerCase() : 'notfound')}
                                             alt={coinFromApi.id}

@@ -11,7 +11,7 @@ describe('modal interaction', () => {
 
       cy.reload();
       cy.get('[data-testid="header-mycoins"] button').should('exist').click();
-      cy.get('[data-testid="purchase-mycoins"]:last-child > :last-child > :last-child').should('exist').click();
+      cy.get('[data-testid="sell-btn-wrapper"] > :last-child').should('exist').click();
     })
 
     it('add coin from table incorrect info (negative number)', () => {
