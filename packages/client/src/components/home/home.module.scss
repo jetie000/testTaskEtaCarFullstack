@@ -1,0 +1,159 @@
+.blocks_wrapper {
+  display: flex;
+  gap: 20px;
+}
+
+.coin_table {
+  min-width: 800px;
+  text-align: end;
+  align-content: center;
+  margin: 50px auto 2rem;
+
+  & thead {
+
+    & tr {
+      background-color: rgb(232, 232, 232);
+
+      & th {
+        padding: 10px;
+        cursor: pointer;
+
+        & div.empty {
+          width: 16px;
+          height: 16px;
+          display: inline-block;
+        }
+
+        &:nth-child(1) {
+          cursor: default;
+        }
+
+        &:nth-child(2) {
+          text-align: start;
+        }
+
+        &:nth-child(3) {
+          text-align: start;
+        }
+
+        &:last-child {
+          padding-right: 15px;
+          cursor: default;
+        }
+      }
+    }
+  }
+
+  & tbody {
+
+    & tr {
+      & th {
+        padding: 10px;
+
+        &:nth-child(3) {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          text-align: start;
+          word-wrap: break-word;
+
+          & img {
+            width: 40px;
+            height: 40px;
+          }
+        }
+
+        &:nth-child(2) {
+          text-align: center;
+        }
+      }
+
+      &:nth-child(2n) {
+        background-color: rgb(232, 232, 232);
+      }
+
+      &:hover {
+        cursor: pointer;
+        background-color: darken($color: #c6c6c6, $amount: 0.5);
+      }
+    }
+  }
+}
+
+.loading {
+  margin: auto;
+  margin-top: 5rem;
+  text-align: center;
+}
+
+.pagination {
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 3rem;
+
+  & a {
+    display: block;
+    background-color: rgb(222, 222, 222);
+    cursor: pointer;
+    min-width: 30px;
+    padding: 5px;
+    margin: 5px;
+    border: 0;
+    border-radius: 10px;
+    text-align: center;
+
+    &.disabled {
+      background-color: rgb(240, 240, 240);
+      cursor: auto;
+      pointer-events: none;
+    }
+
+    &:hover {
+      background-color: rgb(193, 193, 193);
+    }
+
+    &.disabled:hover {
+      cursor: default;
+    }
+  }
+}
+
+@media (max-width: 800px) {
+  .coin_table {
+    min-width: 700px;
+  }
+}
+
+@media (max-width: 700px) {
+  .coin_table {
+    min-width: 318px;
+
+    & thead tr {
+      display: flex;
+      flex-wrap: wrap;
+
+      & th {
+        text-align: center !important;
+        width: 50%;
+        &:nth-child(3), &:nth-child(4), &:nth-child(5){
+          width: 100%;
+        }
+      }
+    }
+
+    & tbody tr {
+      display: flex;
+      flex-wrap: wrap;
+
+      & th {
+        text-align: center !important;
+        width: 50%;
+        &:nth-child(3), &:nth-child(4), &:nth-child(5){
+          width: 100%;
+        }
+        justify-content: center;
+      }
+    }
+  }
+}

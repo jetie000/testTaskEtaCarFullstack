@@ -1,0 +1,43 @@
+button{
+    font-family: inherit;
+    font-size: inherit;
+    cursor: pointer;
+    border: 0;
+    border-radius: 10px;
+    background-color: #cfcfcf;
+
+    &.small{
+        padding: 5px;
+        font-weight: 600;
+    }
+
+    &.medium{
+        padding: 8px;
+        font-weight: 400;
+    }
+
+    &.large{
+        font-size: 24px;
+        padding: 10px;
+    }
+
+    &.circle{
+        border-radius: 40px;
+    }
+
+    &.round{
+        border-radius: 10px;
+    }
+
+    &.default{
+        border-radius: 5px;
+    }
+
+    &.grow{
+        flex-grow: 1;
+    }
+
+    &:hover {
+        background-color: rgb(187, 187, 187);
+    }
+}

@@ -1,0 +1,123 @@
+.wrapper {
+    padding: 0 50px;
+}
+
+.coin {
+    min-width: 800px;
+    max-width: 1200px;
+    min-height: 500px;
+    border: 2px solid #cfcfcf;
+    border-radius: 50px;
+    margin: 100px auto;
+    padding: 20px;
+    display: flex;
+    gap: 25px;
+
+    & div.wrapper_left {
+        border: 2px solid #cfcfcf;
+        border-radius: 40px;
+        width: 500px;
+        padding: 15px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 10px;
+
+        & div.coin_title {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+
+            & img {
+                width: 50px;
+                height: 50px;
+
+                &.fav_img {
+                    width: 30px;
+                    height: 30px;
+                    cursor: pointer;
+                }
+            }
+
+            & h2 {
+                background-color: #d6d6d6;
+                border-radius: 20px;
+                padding: 5px;
+            }
+        }
+
+        & .coin_info {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        & #supply_input {
+            width: 100%;
+        }
+    }
+
+    & div.wrapper_right {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        gap: 15px;
+
+        & div.wrapper_buttons {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+        }
+    }
+}
+
+.no_coin_error {
+    margin: 100px auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+
+    & a {
+        padding: 5px 10px;
+        margin: 20px auto 0;
+        border: 2px solid #aaaaaa;
+        border-radius: 10px;
+        background-color: #cfcfcf;
+    }
+}
+
+@media (max-width: 1200px) {
+    .wrapper_left{
+        width: 350px !important;
+    }
+}
+
+@media (max-width: 900px) {
+    .wrapper{
+        padding: 0 10px;
+    }
+    .coin{
+        flex-direction: column;
+        min-width: 320px;
+        margin-top: 80px;
+
+    }
+    .wrapper_left{
+        width: 100% !important;
+    }
+}
+
+@media (max-width: 400px){
+    .wrapper{
+        padding: 0;
+    }
+    .coin{
+        flex-direction: column;
+        min-width: 320px;
+        margin-top: 60px;
+
+    }
+    .wrapper_left{
+        width: 100% !important;
+    }
+}
