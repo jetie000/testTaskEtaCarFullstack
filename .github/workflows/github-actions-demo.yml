@@ -14,17 +14,12 @@ jobs:
           with: 
             node-version: ${{ matrix.node-version}}
         - name: install modules
-          working-directory: ./packages/client
-          run: npm install
+          run: cd packages/client ; npm install
         - name: build project
-          working-directory: ./packages/client
-          run: npm run build
+          run: cd packages/client ; npm run build
         - name: unit test
-          working-directory: ./packages/client
-          run: npm run test
+          run: cd packages/client ; npm run test
         - name: e2e test
-          working-directory: ./packages/client
-          run: npm run test:e2e
+          run: cd packages/client ; npm run test:e2e
         - name: storybook test
-          working-directory: ./packages/client
-          run: npm run build-storybook
+          run: cd packages/client ; npm run build-storybook
