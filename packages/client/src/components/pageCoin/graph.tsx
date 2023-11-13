@@ -13,7 +13,7 @@ var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 function Graph({ coin }: { coin: ICoin }) {
     const [period, setPeriod] = useState('week');
 
-    const coinGraph = trpc.getPriceGraph.useQuery({id: coin.id, period: period}); // isLoading, response, isSuccess
+    const coinGraph = trpc.getPriceGraph.useQuery({id: coin.id, period: period});
 
     const [dataPoints, setDataPoints] = useState<IChartData[]>([]);
     const [chartCV, setChartCV] = useState<any>();

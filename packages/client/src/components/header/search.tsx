@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import Button from "../button/Button";
 import styles from './header.module.scss'
 import CoinSearchItem from "./coinSearchItem";
@@ -12,15 +12,15 @@ function Search() {
     const coinsSearch = trpc.searchAll.useQuery({ page: searchPage, searchStr: searchVal });
     let coins: ICoin[] = coinsSearch.data?.data;
 
-    const handleSearchClick = () => {
+    const handleSearchClick = useCallback(() => {
         setSearchVal((document.getElementById('searchInput') as HTMLInputElement).value);
         coins = coinsSearch.data?.data;
-    }
-
-    const showMore = () => {
+    }, [setSearchVal, coinsSearch]);
+    
+    const showMore = useCallback(() => {
         setSearchPage(searchPage + 1);
         coins = coinsSearch.data?.data;
-    }
+    }, [setSearchPage, coinsSearch]);
     
     const toogleSearch = () => {
         setSearchPage(1);
