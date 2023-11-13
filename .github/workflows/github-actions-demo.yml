@@ -18,9 +18,9 @@ jobs:
         - name: install modules server
           run: cd packages/server ; npm install
         - name: start server
-          run: cd packages/server ; npm start
+          run: cd packages/server ; npm start & npx wait-on http://localhost:8080
         - name: start client
-          run: cd packages/client ; npm start
+          run: cd packages/client ; npm start & npx wait-on http://localhost:3000
         - name: build project
           run: cd packages/client ; npm run build
         - name: unit test
