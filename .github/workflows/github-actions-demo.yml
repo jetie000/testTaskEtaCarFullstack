@@ -2,9 +2,9 @@ name: Node CI
 run-name: ${{ github.actor }}, ${{github.action}}
 on: 
   push:
-    branches: [ master ]
+    branches: [ master, main ]
   pull_request: 
-    branches: [ master ]
+    branches: [ master, main ]
 jobs:
   Node-CI:
     runs-on: ubuntu-latest
