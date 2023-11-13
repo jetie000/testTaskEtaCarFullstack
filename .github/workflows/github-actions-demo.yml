@@ -14,7 +14,8 @@ jobs:
           with: 
             node-version: ${{ matrix.node-version}}
         - name: go to client
-          run: cd packages/client
+          run: 
+          working-directory: ./packages/client
         - name: install modules
           run: npm install
         - name: build project
