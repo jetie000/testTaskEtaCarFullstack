@@ -1,8 +1,12 @@
-name: GitHub Actions Demo
-run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
-on: [push]
+name: Node CI
+run-name: ${{ github.actor }}, ${{github.action}}
+on: 
+  push:
+    branches: [ master ]
+  pull_request: 
+    branches: [ master ]
 jobs:
-  Explore-GitHub-Actions:
+  Node-CI:
     runs-on: ubuntu-latest
     strategy:
         matrix:
@@ -17,12 +21,12 @@ jobs:
           run: cd packages/client ; npm install
         - name: install modules server
           run: cd packages/server ; npm install
+        - name: build project
+          run: cd packages/client ; npm run build
         - name: start server
           run: cd packages/server ; npm start & npx wait-on http://localhost:8080
         - name: start client
           run: cd packages/client ; npm start & npx wait-on http://localhost:3000
-        - name: build project
-          run: cd packages/client ; npm run build
         - name: unit test
           run: cd packages/client ; npm run test
         - name: e2e test

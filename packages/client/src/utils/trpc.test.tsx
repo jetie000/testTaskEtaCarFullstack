@@ -50,4 +50,17 @@ describe('trpc tests', () => {
         const res = (await caller.getPriceGraph({id: 'bitcoin', period: "month"})).data;
         expect(res[1].time - res[0].time).toBe(43200000);
     })
+
+    test('getByIds method with response', async () => {
+        const caller = appRouter.createCaller({})
+        const res = (await caller.getByIds({ids: 'bitcoin'})).data;
+        expect(res).toHaveLength(1);
+    })
+
+    test('getByIds method without response', async () => {
+        const caller = appRouter.createCaller({})
+        const res = (await caller.getByIds({ids: 'fdhjsfhdsuifgsdhfj'})).data;
+        expect(res).toHaveLength(0);
+    })
+
 })
