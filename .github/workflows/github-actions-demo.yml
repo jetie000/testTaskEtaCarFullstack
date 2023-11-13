@@ -13,8 +13,10 @@ jobs:
           uses: actions/setup-node@v4
           with: 
             node-version: ${{ matrix.node-version}}
-        - name: install modules
+        - name: install modules client
           run: cd packages/client ; npm install
+        - name: install modules server
+          run: cd packages/server ; npm install
         - name: build project
           run: cd packages/client ; npm run build
         - name: unit test
