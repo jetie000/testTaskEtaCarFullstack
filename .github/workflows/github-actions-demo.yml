@@ -27,9 +27,9 @@ jobs:
           run: cd packages/server ; npm start & npx wait-on http://localhost:8080
         - name: start client
           run: cd packages/client ; npm start & npx wait-on http://localhost:3000
-        - name: unit test
-          run: cd packages/client ; npm run test
         - name: e2e test
           run: cd packages/client ; npm run test:e2e
+        - name: unit test
+          run: cd packages/client ; npm run test
         - name: storybook test
           run: cd packages/client ; npm run build-storybook
