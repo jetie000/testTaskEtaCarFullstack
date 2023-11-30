@@ -30,6 +30,7 @@ DATABASE_URL="postgresql://postgres:YOUR_PASSWORD@localhost:YOUR_PORT/YOUR_DBNAM
 Execute this in existing terminal
 
 ```
+npx prisma migrate deploy
 npx prisma db seed 
 ```
 
