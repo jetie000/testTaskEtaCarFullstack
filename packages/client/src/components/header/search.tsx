@@ -10,16 +10,17 @@ function Search() {
     const [searchPage, setSearchPage] = useState(1);
     const [searchVal, setSearchVal] = useState('');
     const coinsSearch = trpc.searchAll.useQuery({ page: searchPage, searchStr: searchVal });
-    let coins: ICoin[] = coinsSearch.data?.data;
+    
+    let coins: ICoin[] = coinsSearch.data || [];
 
     const handleSearchClick = useCallback(() => {
         setSearchVal((document.getElementById('searchInput') as HTMLInputElement).value);
-        coins = coinsSearch.data?.data;
+        coins = coinsSearch.data || [];
     }, [setSearchVal, coinsSearch]);
     
     const showMore = useCallback(() => {
         setSearchPage(searchPage + 1);
-        coins = coinsSearch.data?.data;
+        coins = coinsSearch.data || [];
     }, [setSearchPage, coinsSearch]);
     
     const toogleSearch = () => {

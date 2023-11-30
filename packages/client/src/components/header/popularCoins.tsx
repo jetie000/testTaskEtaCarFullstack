@@ -11,7 +11,7 @@ function PopularCoins() {
     return (
         <div id={styles.popular}>
             {coinsPopular.isSuccess &&
-                coinsPopular.data?.data.map((coin: ICoin) =>
+                coinsPopular.data?.map((coin: ICoin) =>
                     <div key={coin.id}>
                         <div>#{coin.rank}</div>
                         <img loading="lazy"

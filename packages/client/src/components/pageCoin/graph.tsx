@@ -13,7 +13,7 @@ var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 function Graph({ coin }: { coin: ICoin }) {
     const [period, setPeriod] = useState('week');
 
-    const coinGraph = trpc.getPriceGraph.useQuery({id: coin.id, period: period});
+    const coinGraph = trpc.getPriceGraph.useQuery({rank: coin.rank, period: period});
 
     const [dataPoints, setDataPoints] = useState<IChartData[]>([]);
     const [chartCV, setChartCV] = useState<any>();
@@ -29,15 +29,19 @@ function Graph({ coin }: { coin: ICoin }) {
     const drawChart = (chartCV: any) => {
         var chart = chartCV;
         let dataPointsTemp: IChartData[] = [];
-        let coinGraphData = coinGraph.data?.data;
+        let coinGraphData = coinGraph.data!;
+        console.log(coinGraph.data);
+        
         for (var i = 0; i < coinGraphData.length; i++) {
             dataPointsTemp.push({
-                x: new Date(coinGraphData[i].time),
+                x: new Date(parseInt(coinGraphData[i].time)),
                 y: Number(coinGraphData[i].priceUsd) < 0.1
                     ? Number(parseFloat(Number(coinGraphData[i].priceUsd).toPrecision(3)))
                     : Number(Number(coinGraphData[i].priceUsd).toFixed(3))
             });
         }
+        console.log(dataPointsTemp);
+        
         if (chart) {
             setDataPoints(dataPointsTemp);
             chart.render();

@@ -23,7 +23,7 @@ export default function CoinTable() {
     const [responseAdd, setResponseAdd] = useState('')
 
     const navigate = useNavigate();
-    let coins: ICoin[] = coinsPage.data?.data;
+    let coins: ICoin[] | undefined = coinsPage.data;
 
     const favCoins = useLocalFavs().data;
     const setFavCoins = useSetLocalFavs();
@@ -35,7 +35,7 @@ export default function CoinTable() {
         setFavCoins.mutate((favCoins || [])!.filter(coin => coin != coinId));
     }
 
-    if (coins?.length > 0) {
+    if (coins && coins?.length > 0) {
         if (Number.isNaN(Number(coins[0][sortBy as keyof ICoin])))
             coins = coins.sort((coin1, coin2) =>
                 coin1[sortBy as keyof ICoin]! > coin2[sortBy as keyof ICoin]!

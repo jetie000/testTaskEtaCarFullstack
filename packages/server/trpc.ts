@@ -9,29 +9,29 @@ export const appRouter = t.router({
     page: z.number(),
     limit: z.number()
   })).query(async ({ input }) => {
-    return (await CoinService.getAll(input.page, input.limit)).data;
+    return (await CoinService.getAll(input.page, input.limit));
   }),
   getById: t.procedure.input(z.object({
     id: z.string()
   })).query(async ({ input }) => {
-    return (await CoinService.getById(input.id)).data;
+    return (await CoinService.getById(input.id));
   }),
   searchAll: t.procedure.input(z.object({
     searchStr: z.string(),
     page: z.number()
   })).query(async ({ input }) => {
-    return (await CoinService.searchAll(input.searchStr, input.page) || {}).data;
+    return (await CoinService.searchAll(input.searchStr, input.page) || {});
   }),
   getPriceGraph: t.procedure.input(z.object({
-    id: z.string(),
+    rank: z.number(),
     period: z.string()
   })).query(async ({ input }) => {
-    return (await CoinService.getPriceGraph(input.id, input.period)).data;
+    return (await CoinService.getPriceGraph(input.rank, input.period));
   }),
   getByIds: t.procedure.input(z.object({
     ids: z.string()
   })).query(async ({ input }) => {
-    return (await CoinService.getByIds(input.ids)).data;
+    return (await CoinService.getByIds(input.ids));
   })
 });
 

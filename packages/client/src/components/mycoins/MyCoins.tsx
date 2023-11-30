@@ -34,7 +34,7 @@ function MyCoins({ setCurrCoin, setModalPurpose }: { setCurrCoin: Function, setM
 
     (purchasesLocal || [])
         .forEach((purchCoin) => (total +=
-            (Number((purchCoinsResponse.data?.data as ICoin[])
+            (Number((purchCoinsResponse.data as ICoin[])
                 ?.find(coin => coin.id === purchCoin.id)!.priceUsd) - Number(purchCoin.priceUsd)) * purchCoin.coinNum));
 
     return (
@@ -42,8 +42,8 @@ function MyCoins({ setCurrCoin, setModalPurpose }: { setCurrCoin: Function, setM
                 <h1>My coins</h1>
                 {
                     favCoinsResponse.isSuccess ? (
-                        favCoinsResponse.data.data?.length > 0 ?
-                            (favCoinsResponse.data?.data as ICoin[]).map(favCoin =>
+                        favCoinsResponse.data.length > 0 ?
+                            (favCoinsResponse.data as ICoin[]).map(favCoin =>
                                 <div className={styles.fav_item} key={favCoin.id}>
                                     <div onClick={(favCoinsLocal || []).find(coinId => coinId === favCoin.id)
                                         ? () => removeFavCoin(favCoin.id)
@@ -74,9 +74,9 @@ function MyCoins({ setCurrCoin, setModalPurpose }: { setCurrCoin: Function, setM
                 <h1>My purchases</h1>
                 {
                     purchCoinsResponse.isSuccess ? (
-                        purchCoinsResponse.data.data?.length > 0 ?
+                        purchCoinsResponse.data.length > 0 ?
                             (purchasesLocal as ICoinCase[]).map((purchCoin, index) => {
-                                let coinFromApi = (purchCoinsResponse.data?.data as ICoin[]).find(coin => coin.id === purchCoin.id)!;
+                                let coinFromApi = (purchCoinsResponse.data as ICoin[]).find(coin => coin.id === purchCoin.id)!;
                                 return <div className={styles.purch_wrapper} key={coinFromApi.id + purchCoin.coinNum + purchCoin.priceUsd}>
                                     <div data-testid='sell-btn-wrapper' className={styles.purch_item}>
                                         <img loading="lazy"

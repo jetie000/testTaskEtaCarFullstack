@@ -15,7 +15,7 @@ import Button from "../button/Button";
 function CoinPage() {
     let { id } = useParams();
     const coinResponse = trpc.getById.useQuery({ id: id || '1' }); 
-    let coin: ICoin = (coinResponse as { data: { data: ICoin } }).data?.data;
+    let coin: ICoin = coinResponse.data!;
 
     const [modalPurpose, setModalPurpose] = useState('');
     const [responseAdd, setResponseAdd] = useState('')
